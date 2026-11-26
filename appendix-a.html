@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Explore and print the four stimulus versions for a proposed 2 × 2 online experiment.">
+  <meta name="theme-color" content="#f8f9f6">
+  <title>Appendix A · Stimulus wording</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --background: #f8f9f6;
+      --paper: #fff;
+      --ink: #1c2b26;
+      --muted: #52635a;
+      --accent: #235c4d;
+      --accent-deep: #184538;
+      --wash: #eef4ee;
+      --line: #cdd9d0;
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--background); color: var(--ink); font: 1rem/1.55 var(--sans); }
+    button, a { font: inherit; }
+    a { color: inherit; }
+    :focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+    h1, h2, h3, p, ul { margin: 0; }
+    h1, h2 { font-family: var(--serif); font-weight: 400; }
+    h1 { max-width: 13ch; font-size: clamp(2.65rem, 7.6vw, 5.5rem); line-height: .99; letter-spacing: -.062em; }
+    h2 { font-size: clamp(2rem, 4.8vw, 3.25rem); letter-spacing: -.05em; line-height: 1.05; }
+    h3 { line-height: 1.3; }
+    .wrap { width: min(100% - 48px, 1120px); margin-inline: auto; }
+    .skip { position: absolute; left: 1rem; top: -5rem; z-index: 2; padding: .6rem 1rem; background: var(--paper); }
+    .skip:focus { top: 1rem; }
+    .top { border-bottom: 1px solid var(--line); background: var(--paper); }
+    .top .wrap { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .35rem 1.5rem; min-height: 72px; padding-block: .6rem; }
+    .brand { font-family: var(--serif); font-size: 1.15rem; font-weight: 700; text-decoration: none; }
+    .nav { display: flex; flex-wrap: wrap; align-items: center; gap: .25rem 1.5rem; }
+    .nav a { display: inline-flex; align-items: center; min-height: 44px; color: var(--muted); font-size: .9rem; text-decoration: none; }
+    .nav a[aria-current="page"] { color: var(--accent-deep); text-decoration: underline; text-underline-offset: .25em; }
+    .nav a:hover { color: var(--accent); text-decoration: underline; text-underline-offset: .25em; }
+    .print-button { display: none; min-height: 44px; border: 1px solid var(--line); border-radius: 6px; padding: .4rem .8rem; background: var(--paper); color: var(--ink); cursor: pointer; }
+    .interactive .print-button { display: inline-flex; align-items: center; }
+    .print-button:hover { background: var(--wash); }
+    .hero { display: grid; grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr); align-items: center; gap: clamp(2rem, 6vw, 6.25rem); padding-block: clamp(2.5rem, 7vw, 6.5rem); }
+    .intro { display: grid; gap: 1.25rem; }
+    .eyebrow { color: var(--accent-deep); font-size: .79rem; font-weight: 750; letter-spacing: .12em; text-transform: uppercase; }
+    .description { color: var(--muted); max-width: 37ch; font-size: 1.08rem; }
+    .demo { display: grid; gap: .9rem; min-width: 0; }
+    .selectors { display: none; align-items: start; gap: .75rem 1.3rem; flex-wrap: wrap; }
+    .interactive .selectors { display: flex; }
+    fieldset { margin: 0; padding: 0; border: 0; min-inline-size: 0; }
+    legend { margin-bottom: .38rem; color: var(--muted); font-size: .86rem; font-weight: 650; }
+    .buttons { display: flex; flex-wrap: wrap; gap: .28rem; }
+    .choice { min-height: 44px; padding: .4rem .68rem; border: 1px solid var(--line); border-radius: 6px; background: var(--paper); color: var(--ink); font-size: .88rem; cursor: pointer; }
+    .choice:hover { background: var(--wash); }
+    .choice[aria-pressed="true"] { border-color: var(--accent-deep); background: var(--accent-deep); color: #fff; }
+    .demo-page { min-width: 0; border: 1px solid var(--line); border-radius: 12px; background: var(--paper); box-shadow: 0 14px 35px rgba(19, 53, 37, .08); overflow: hidden; }
+    .demo-source { padding: .84rem 1.4rem; background: var(--wash); border-bottom: 1px solid var(--line); font-size: .9rem; font-weight: 720; color: var(--accent-deep); }
+    .demo-body { display: grid; gap: .8rem; padding: clamp(1.15rem, 4vw, 2.1rem); }
+    .demo-tone { font: 400 clamp(1.45rem, 3.2vw, 2.05rem)/1.15 var(--serif); letter-spacing: -.035em; }
+    .demo-body strong { color: var(--accent-deep); }
+    .quiet { color: var(--muted); font-size: .89rem; }
+    .section { border-top: 1px solid var(--line); padding-block: clamp(2.3rem, 6vw, 4.7rem); }
+    .section-header { display: grid; align-items: start; justify-items: start; gap: .55rem; margin-bottom: 1.65rem; }
+    .matrix { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+    .condition { display: grid; align-content: start; gap: .65rem; padding: clamp(1rem, 3vw, 1.6rem); background: var(--paper); }
+    .condition h3 { color: var(--accent-deep); font-size: .88rem; font-weight: 730; }
+    .condition .wording { font: 1.25rem/1.3 var(--serif); }
+    .condition .claim { color: var(--muted); }
+    .item-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 clamp(1rem, 5vw, 4rem); }
+    .item { display: grid; align-content: start; gap: .54rem; border-top: 1px solid var(--line); padding: 1.15rem 0 1.45rem; }
+    .item-wide { grid-column: 1 / -1; }
+    .item ul { padding-left: 1.25rem; }
+    .item h3 { font-size: 1.02rem; font-weight: 700; }
+    .compact-questions { display: grid; gap: .18rem; }
+    .question-next { margin-top: .5rem; }
+    @media (max-width: 790px) {
+      .hero { grid-template-columns: minmax(0, 1fr); }
+      .intro { gap: .9rem; }
+      .description { max-width: 46ch; }
+      .nav { gap: .25rem 1rem; }
+    }
+    @media (max-width: 520px) {
+      .wrap { width: min(100% - 32px, 1120px); }
+      .matrix, .item-list { grid-template-columns: minmax(0, 1fr); }
+      .section-header { margin-bottom: 1.1rem; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    @media print {
+      @page { size: A4; margin: 2.5cm; }
+      :root { color-scheme: light; }
+      body { background: #fff; color: #000; font: 12pt/1.5 "Times New Roman", serif; }
+      .top, .hero, .skip { display: none !important; }
+      .wrap { width: auto; margin: 0; }
+      .section { border: 0; padding: 0; }
+      .section-header { gap: .15rem; margin-bottom: 12pt; }
+      h2, h3, .eyebrow, .condition h3, .condition .wording, .item h3 { font: bold 12pt/1.5 "Times New Roman", serif; letter-spacing: normal; color: #000; text-transform: none; }
+      .quiet, .condition .claim, .condition .wording { font: inherit; color: #000; }
+      .matrix { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; border: 1px solid #9d9d9d; border-radius: 0; overflow: visible; background: transparent; }
+      .condition { border: 1px solid #c1c1c1; background: transparent; padding: 9pt; gap: 3pt; }
+      .item-list { grid-template-columns: minmax(0, 1fr); }
+      .item { border: 0; padding: 0 0 8pt; gap: 2pt; }
+      .condition, .item { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#overview">Skip to content</a>
+  <header class="top">
+    <div class="wrap">
+      <a class="brand" href="index.html">MST 0223</a>
+      <nav class="nav" aria-label="Appendices">
+        <a href="appendix-a.html" aria-current="page">Appendix A</a>
+        <a href="appendix-b.html">Appendix B</a>
+        <button class="print-button" type="button">Print Appendix A</button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="overview" class="wrap">
+    <section class="hero" aria-labelledby="page-title">
+      <div class="intro">
+        <p class="eyebrow">Research proposal · Appendix A</p>
+        <h1 id="page-title">Source and tone in a sustainability claim</h1>
+        <p class="description">Switch the source or wording to explore the four versions of the proposed experiment.</p>
+      </div>
+      <div class="demo">
+        <div class="selectors">
+          <fieldset>
+            <legend>Information source</legend>
+            <div class="buttons">
+              <button class="choice" type="button" data-factor="source" data-value="passport" aria-pressed="true">Product passport</button>
+              <button class="choice" type="button" data-factor="source" data-value="review" aria-pressed="false">Independent review</button>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>Wording</legend>
+            <div class="buttons">
+              <button class="choice" type="button" data-factor="wording" data-value="factual" aria-pressed="true">Factual</button>
+              <button class="choice" type="button" data-factor="wording" data-value="emotional" aria-pressed="false">Emotional</button>
+            </div>
+          </fieldset>
+        </div>
+        <article class="demo-page" aria-live="polite" aria-atomic="true">
+          <h2 class="demo-source" data-preview-source>Brand Digital Product Passport</h2>
+          <div class="demo-body">
+            <p class="demo-tone" data-preview-wording>Here are the T-shirt’s production emissions.</p>
+            <p>Production emissions for this T-shirt were <strong>40% below the industry average</strong> for comparable T-shirts.</p>
+          </div>
+        </article>
+        <p class="quiet">The emissions claim is fictional and identical across the four conditions.</p>
+      </div>
+    </section>
+
+    <section class="section" id="appendix-a" aria-labelledby="a-heading">
+      <header class="section-header">
+        <p class="eyebrow">Appendix A</p>
+        <h2 id="a-heading">Stimulus wording</h2>
+        <p class="quiet">Each participant will see one version. The T-shirt, layout and emissions claim are held constant.</p>
+      </header>
+      <div class="matrix">
+        <article class="condition" data-source="passport" data-wording="factual">
+          <h3>Product passport · Factual</h3>
+          <p data-source-title>Brand Digital Product Passport</p>
+          <p class="wording">Here are the T-shirt’s production emissions.</p>
+          <p class="claim">Production emissions for this T-shirt were 40% below the industry average for comparable T-shirts.</p>
+        </article>
+        <article class="condition" data-source="passport" data-wording="emotional">
+          <h3>Product passport · Emotional</h3>
+          <p data-source-title>Brand Digital Product Passport</p>
+          <p class="wording">A step towards a cleaner future.</p>
+          <p class="claim">Production emissions for this T-shirt were 40% below the industry average for comparable T-shirts.</p>
+        </article>
+        <article class="condition" data-source="review" data-wording="factual">
+          <h3>Independent review · Factual</h3>
+          <p data-source-title>Independent Fashion Review</p>
+          <p class="wording">Here are the T-shirt’s production emissions.</p>
+          <p class="claim">Production emissions for this T-shirt were 40% below the industry average for comparable T-shirts.</p>
+        </article>
+        <article class="condition" data-source="review" data-wording="emotional">
+          <h3>Independent review · Emotional</h3>
+          <p data-source-title>Independent Fashion Review</p>
+          <p class="wording">A step towards a cleaner future.</p>
+          <p class="claim">Production emissions for this T-shirt were 40% below the industry average for comparable T-shirts.</p>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    const selections = { source: "passport", wording: "factual" };
+    const controls = [...document.querySelectorAll(".choice")];
+    const conditions = [...document.querySelectorAll(".condition")];
+    const visibleSource = document.querySelector("[data-preview-source]");
+    const visibleWording = document.querySelector("[data-preview-wording]");
+    const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)");
+
+    function presentText(element, text) {
+      if (element.textContent === text) return;
+      element.textContent = text;
+      if (!reduceMotion.matches && typeof element.animate === "function") {
+        element.getAnimations().forEach(animation => animation.cancel());
+        element.animate(
+          [{ opacity: .55, transform: "translateY(4px)" }, { opacity: 1, transform: "translateY(0)" }],
+          { duration: 170, easing: "ease-out" }
+        );
+      }
+    }
+
+    controls.forEach(button => button.addEventListener("click", () => {
+      selections[button.dataset.factor] = button.dataset.value;
+      const condition = conditions.find(item =>
+        item.dataset.source === selections.source && item.dataset.wording === selections.wording
+      );
+      if (!condition) return;
+      presentText(visibleSource, condition.querySelector("[data-source-title]").textContent);
+      presentText(visibleWording, condition.querySelector(".wording").textContent);
+      controls.forEach(control => {
+        control.setAttribute("aria-pressed", String(selections[control.dataset.factor] === control.dataset.value));
+      });
+    }));
+
+    document.querySelector(".print-button").addEventListener("click", () => window.print());
+    document.documentElement.classList.add("interactive");
+  </script>
+</body>
+</html>
