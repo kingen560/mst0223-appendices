@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Explore and print the four stimulus versions for a proposed 2 × 2 online experiment.">
+  <meta name="description" content="Explore the four stimulus versions for a proposed 2 × 2 online experiment.">
   <meta name="theme-color" content="#f8f9f6">
   <title>Appendix A · Stimulus wording</title>
   <style>
@@ -37,13 +37,6 @@
     .top { border-bottom: 1px solid var(--line); background: var(--paper); }
     .top .wrap { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .35rem 1.5rem; min-height: 72px; padding-block: .6rem; }
     .brand { font-family: var(--serif); font-size: 1.15rem; font-weight: 700; text-decoration: none; }
-    .nav { display: flex; flex-wrap: wrap; align-items: center; gap: .25rem 1.5rem; }
-    .nav a { display: inline-flex; align-items: center; min-height: 44px; color: var(--muted); font-size: .9rem; text-decoration: none; }
-    .nav a[aria-current="page"] { color: var(--accent-deep); text-decoration: underline; text-underline-offset: .25em; }
-    .nav a:hover { color: var(--accent); text-decoration: underline; text-underline-offset: .25em; }
-    .print-button { display: none; min-height: 44px; border: 1px solid var(--line); border-radius: 6px; padding: .4rem .8rem; background: var(--paper); color: var(--ink); cursor: pointer; }
-    .interactive .print-button { display: inline-flex; align-items: center; }
-    .print-button:hover { background: var(--wash); }
     .hero { display: grid; grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr); align-items: center; gap: clamp(2rem, 6vw, 6.25rem); padding-block: clamp(2.5rem, 7vw, 6.5rem); }
     .intro { display: grid; gap: 1.25rem; }
     .eyebrow { color: var(--accent-deep); font-size: .79rem; font-weight: 750; letter-spacing: .12em; text-transform: uppercase; }
@@ -81,7 +74,6 @@
       .hero { grid-template-columns: minmax(0, 1fr); }
       .intro { gap: .9rem; }
       .description { max-width: 46ch; }
-      .nav { gap: .25rem 1rem; }
     }
     @media (max-width: 520px) {
       .wrap { width: min(100% - 32px, 1120px); }
@@ -89,34 +81,13 @@
       .section-header { margin-bottom: 1.1rem; }
     }
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
-    @media print {
-      @page { size: A4; margin: 2.5cm; }
-      :root { color-scheme: light; }
-      body { background: #fff; color: #000; font: 12pt/1.5 "Times New Roman", serif; }
-      .top, .hero, .skip { display: none !important; }
-      .wrap { width: auto; margin: 0; }
-      .section { border: 0; padding: 0; }
-      .section-header { gap: .15rem; margin-bottom: 12pt; }
-      h2, h3, .eyebrow, .condition h3, .condition .wording, .item h3 { font: bold 12pt/1.5 "Times New Roman", serif; letter-spacing: normal; color: #000; text-transform: none; }
-      .quiet, .condition .claim, .condition .wording { font: inherit; color: #000; }
-      .matrix { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; border: 1px solid #9d9d9d; border-radius: 0; overflow: visible; background: transparent; }
-      .condition { border: 1px solid #c1c1c1; background: transparent; padding: 9pt; gap: 3pt; }
-      .item-list { grid-template-columns: minmax(0, 1fr); }
-      .item { border: 0; padding: 0 0 8pt; gap: 2pt; }
-      .condition, .item { break-inside: avoid; }
-    }
   </style>
 </head>
 <body>
   <a class="skip" href="#overview">Skip to content</a>
   <header class="top">
     <div class="wrap">
-      <a class="brand" href="index.html">MST 0223</a>
-      <nav class="nav" aria-label="Appendices">
-        <a href="appendix-a.html" aria-current="page">Appendix A</a>
-        <a href="appendix-b.html">Appendix B</a>
-        <button class="print-button" type="button">Print Appendix A</button>
-      </nav>
+      <span class="brand">MST 0223</span>
     </div>
   </header>
 
@@ -224,7 +195,6 @@
       });
     }));
 
-    document.querySelector(".print-button").addEventListener("click", () => window.print());
     document.documentElement.classList.add("interactive");
   </script>
 </body>
