@@ -39,6 +39,7 @@
     .brand { font-family: var(--serif); font-size: 1.15rem; font-weight: 700; text-decoration: none; }
     .nav { display: flex; flex-wrap: wrap; align-items: center; gap: .25rem 1.5rem; }
     .nav a { display: inline-flex; align-items: center; min-height: 44px; color: var(--muted); font-size: .9rem; text-decoration: none; }
+    .nav a[aria-current="page"] { color: var(--accent-deep); text-decoration: underline; text-underline-offset: .25em; }
     .nav a:hover { color: var(--accent); text-decoration: underline; text-underline-offset: .25em; }
     .print-button { display: none; min-height: 44px; border: 1px solid var(--line); border-radius: 6px; padding: .4rem .8rem; background: var(--paper); color: var(--ink); cursor: pointer; }
     .interactive .print-button { display: inline-flex; align-items: center; }
@@ -111,10 +112,10 @@
   <a class="skip" href="#overview">Skip to content</a>
   <header class="top">
     <div class="wrap">
-      <a class="brand" href="#overview">MST 0223</a>
+      <a class="brand" href="index.html">MST 0223</a>
       <nav class="nav" aria-label="Appendices">
-        <a href="#appendix-a">Appendix A</a>
-        <a href="#appendix-b">Appendix B</a>
+        <a href="appendix-a.html">Appendix A</a>
+        <a href="appendix-b.html">Appendix B</a>
         <button class="print-button" type="button">Print appendices</button>
       </nav>
     </div>
