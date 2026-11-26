@@ -3,152 +3,319 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Read and print the measurement items and checks for the proposed experiment.">
-  <meta name="theme-color" content="#f8f9f6">
+  <meta name="description" content="Explore the measurement items and checks in Appendix B of the proposed experiment.">
+  <meta name="theme-color" content="#112d28">
   <title>Appendix B · Measurement items</title>
   <style>
     :root {
       color-scheme: light;
-      --background: #f8f9f6;
       --paper: #fff;
-      --ink: #1c2b26;
-      --muted: #52635a;
-      --accent: #235c4d;
-      --accent-deep: #184538;
-      --wash: #eef4ee;
-      --line: #cdd9d0;
+      --background: #eef2ee;
+      --ink: #182a25;
+      --muted: #4d6159;
+      --dark: #112d28;
+      --dark-soft: #1f433b;
+      --accent: #d4ed88;
+      --line: #d8e2da;
+      --wash: #f2f6f2;
       --serif: Georgia, "Times New Roman", serif;
       --sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
+
     *, *::before, *::after { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
     body { margin: 0; background: var(--background); color: var(--ink); font: 1rem/1.55 var(--sans); }
-    button, a { font: inherit; }
-    a { color: inherit; }
-    :focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
     h1, h2, h3, p, ul { margin: 0; }
-    h1, h2 { font-family: var(--serif); font-weight: 400; }
-    h1 { max-width: 13ch; font-size: clamp(2.65rem, 7.6vw, 5.5rem); line-height: .99; letter-spacing: -.062em; }
-    h2 { font-size: clamp(2rem, 4.8vw, 3.25rem); letter-spacing: -.05em; line-height: 1.05; }
-    h3 { line-height: 1.3; }
-    .wrap { width: min(100% - 48px, 1120px); margin-inline: auto; }
-    .skip { position: absolute; left: 1rem; top: -5rem; z-index: 2; padding: .6rem 1rem; background: var(--paper); }
+    button { font: inherit; color: inherit; }
+    button:focus-visible, summary:focus-visible, a:focus-visible { outline: 3px solid #477669; outline-offset: 4px; }
+    [hidden] { display: none !important; }
+    .wrap { width: min(100% - 48px, 980px); margin-inline: auto; }
+    .skip { position: absolute; left: 1rem; top: -8rem; z-index: 3; padding: .75rem 1rem; background: var(--paper); color: var(--ink); }
     .skip:focus { top: 1rem; }
-    .top { border-bottom: 1px solid var(--line); background: var(--paper); }
-    .top .wrap { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .35rem 1.5rem; min-height: 72px; padding-block: .6rem; }
-    .brand { font-family: var(--serif); font-size: 1.15rem; font-weight: 700; text-decoration: none; }
-    .nav { display: flex; flex-wrap: wrap; align-items: center; gap: .25rem 1.5rem; }
-    .nav a { display: inline-flex; align-items: center; min-height: 44px; color: var(--muted); font-size: .9rem; text-decoration: none; }
-    .nav a[aria-current="page"] { color: var(--accent-deep); text-decoration: underline; text-underline-offset: .25em; }
-    .nav a:hover { color: var(--accent); text-decoration: underline; text-underline-offset: .25em; }
-    .print-button { display: none; min-height: 44px; border: 1px solid var(--line); border-radius: 6px; padding: .4rem .8rem; background: var(--paper); color: var(--ink); cursor: pointer; }
-    .interactive .print-button { display: inline-flex; align-items: center; }
-    .print-button:hover { background: var(--wash); }
-    .eyebrow { color: var(--accent-deep); font-size: .79rem; font-weight: 750; letter-spacing: .12em; text-transform: uppercase; }
-    .quiet { color: var(--muted); font-size: .89rem; }
-    .section { border-top: 1px solid var(--line); padding-block: clamp(2.3rem, 6vw, 4.7rem); }
-    .section-header { display: grid; align-items: start; justify-items: start; gap: .55rem; margin-bottom: 1.65rem; }
-    .item-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 clamp(1rem, 5vw, 4rem); }
-    .item { display: grid; align-content: start; gap: .54rem; border-top: 1px solid var(--line); padding: 1.15rem 0 1.45rem; }
-    .item-wide { grid-column: 1 / -1; }
-    .item ul { padding-left: 1.25rem; }
-    .item h3 { font-size: 1.02rem; font-weight: 700; }
-    .compact-questions { display: grid; gap: .18rem; }
-    .question-next { margin-top: .5rem; }
-    #appendix-b { border-top: 0; }
-    #b-heading { max-width: none; font-size: clamp(2.65rem, 6.2vw, 4.5rem); }
-    @media (max-width: 790px) {
-      .nav { gap: .25rem 1rem; }
+
+    .masthead {
+      color: #f5f8ef;
+      background: var(--dark);
+      background-image: radial-gradient(ellipse at 95% 0%, #315749, transparent 62%);
+      border-bottom: 1px solid var(--dark-soft);
     }
-    @media (max-width: 520px) {
-      .wrap { width: min(100% - 32px, 1120px); }
-      .item-list { grid-template-columns: minmax(0, 1fr); }
-      .section-header { margin-bottom: 1.1rem; }
+    .masthead .wrap { padding-block: clamp(2rem, 6vw, 4.6rem) clamp(3.2rem, 7vw, 5.8rem); }
+    .kicker, .stage-timing {
+      font-size: .875rem;
+      font-weight: 750;
+      letter-spacing: .09em;
+      text-transform: uppercase;
     }
-    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
-    @media print {
-      @page { size: A4; margin: 2.5cm; }
-      :root { color-scheme: light; }
-      body { background: #fff; color: #000; font: 12pt/1.5 "Times New Roman", serif; }
-      .top, .skip { display: none !important; }
-      .wrap { width: auto; margin: 0; }
-      .section { border: 0; padding: 0; }
-      .section-header { gap: .15rem; margin-bottom: 12pt; }
-      h2, h3, .eyebrow, .item h3 { font: bold 12pt/1.5 "Times New Roman", serif; letter-spacing: normal; color: #000; text-transform: none; }
-      .quiet { font: inherit; color: #000; }
-      .item-list { grid-template-columns: minmax(0, 1fr); }
-      .item { border: 0; padding: 0 0 8pt; gap: 2pt; }
-      .item { break-inside: avoid; }
-      #b-heading { font: bold 12pt/1.5 "Times New Roman", serif; letter-spacing: normal; }
+    .kicker { color: var(--accent); margin-bottom: .65rem; }
+    h1 { font: 400 clamp(2.6rem, 7vw, 5.35rem)/1 var(--serif); letter-spacing: -.06em; }
+    .deck { max-width: 44ch; margin-top: .85rem; color: #cee0d6; }
+
+    main { margin-top: -1.65rem; padding-bottom: 3.5rem; position: relative; }
+    .flow {
+      border: 1px solid var(--line);
+      border-radius: 1.2rem;
+      background: var(--paper);
+      box-shadow: 0 14px 42px #233b2814;
     }
+    .stage-rail {
+      display: none;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: .4rem;
+      padding: .6rem;
+      border-bottom: 1px solid var(--line);
+    }
+    .has-interaction .stage-rail { display: grid; }
+    .stage-button {
+      display: grid;
+      align-content: start;
+      gap: .2rem;
+      min-width: 0;
+      min-height: 68px;
+      padding: .7rem .75rem;
+      border: 1px solid transparent;
+      background: transparent;
+      border-radius: .7rem;
+      text-align: left;
+      cursor: pointer;
+      transition: background-color 170ms ease, color 170ms ease;
+    }
+    .stage-button:hover { background: var(--wash); }
+    .stage-button[aria-selected="true"] { color: #f7faef; background: var(--dark); }
+    .stage-button-label { font-size: .95rem; font-weight: 750; }
+    .stage-button-detail { font-size: .875rem; color: var(--muted); }
+    .stage-button[aria-selected="true"] .stage-button-detail { color: #cce1d6; }
+
+    .stage-panel { padding: clamp(1rem, 3.5vw, 2rem); }
+    .stage-panel + .stage-panel { border-top: 1px solid var(--line); }
+    .has-interaction .stage-panel + .stage-panel { border-top: 0; }
+    .stage-header { display: flex; align-items: start; justify-content: space-between; flex-wrap: wrap; gap: .75rem 1rem; margin-bottom: 1rem; }
+    .stage-timing { color: #2d6959; margin-bottom: .25rem; }
+    .stage-title { font: 400 clamp(1.75rem, 3.5vw, 2.7rem)/1.1 var(--serif); letter-spacing: -.04em; }
+    .pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .8rem; }
+    .measure {
+      min-width: 0;
+      padding: 1rem;
+      border-radius: .75rem;
+      background: var(--wash);
+      border: 1px solid #e4ebe4;
+    }
+    .measure h3 { font-size: 1rem; margin-bottom: .45rem; }
+    .measure ul { padding-inline-start: 1.15rem; }
+    .measure p + p { margin-top: .5rem; }
+    .caption { color: var(--muted); font-size: .9rem; }
+    .scale { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .35rem .75rem; border-top: 1px solid var(--line); padding-top: .55rem; margin-top: .8rem; }
+    .choices { display: flex; flex-wrap: wrap; gap: .4rem; padding: 0 !important; list-style: none; margin-top: .65rem; }
+    .choices li { border: 1px solid var(--line); border-radius: .45rem; padding: .25rem .55rem; font-size: .875rem; }
+    .order-button {
+      display: none;
+      min-height: 44px;
+      padding: .45rem .75rem;
+      border: 1px solid var(--line);
+      border-radius: .55rem;
+      background: var(--paper);
+      font-weight: 650;
+      cursor: pointer;
+    }
+    .has-interaction .order-button { display: inline-block; }
+    .order-button:hover { background: var(--wash); }
+    .order-note { margin-top: .7rem; }
+    .control {
+      margin-top: 1rem;
+      padding: 0 1rem;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: .75rem;
+    }
+    .control summary { padding: .85rem .1rem; cursor: pointer; font-weight: 700; }
+    .control-body { padding: .1rem .1rem 1rem; }
+    .control-body ul { padding-inline-start: 1.25rem; }
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      padding: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      clip-path: inset(50%);
+    }
+
+    @media (max-width: 600px) {
+      .wrap { width: min(100% - 28px, 980px); }
+      .pair { grid-template-columns: minmax(0, 1fr); }
+      .stage-button { padding: .55rem .4rem; }
+      .stage-button-detail { font-size: .81rem; }
+      main { margin-top: -1.3rem; }
+    }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; } }
   </style>
 </head>
 <body>
-  <a class="skip" href="#overview">Skip to content</a>
-  <header class="top">
+  <a class="skip" href="#measurement-flow">Skip to measurement items</a>
+  <header class="masthead">
     <div class="wrap">
-      <a class="brand" href="index.html">MST 0223</a>
-      <nav class="nav" aria-label="Appendices">
-        <a href="appendix-a.html">Appendix A</a>
-        <a href="appendix-b.html" aria-current="page">Appendix B</a>
-        <button class="print-button" type="button">Print Appendix B</button>
-      </nav>
+      <p class="kicker">Appendix B</p>
+      <h1>Measurement items</h1>
+      <p class="deck">Explore what participants see before and after the outcome measures.</p>
     </div>
   </header>
 
-  <main id="overview" class="wrap">
-    <section class="section" id="appendix-b" aria-labelledby="b-heading">
-      <header class="section-header">
-        <p class="eyebrow">Appendix B</p>
-        <h1 id="b-heading">Measurement items</h1>
-      </header>
-      <div class="item-list">
-        <article class="item item-wide">
-          <h3>Attention check</h3>
-          <p>Please select Option B.</p>
-          <p class="quiet">Options A, B and C. Presented before the outcome measures.</p>
-        </article>
-        <article class="item">
-          <h3>Brand trust</h3>
-          <ul>
-            <li>I trust this brand.</li>
-            <li>This brand is dependable.</li>
-            <li>This brand is honest.</li>
-          </ul>
-          <p class="quiet">1 Strongly disagree · 7 Strongly agree</p>
-          <p class="quiet">Adapted from Chaudhuri and Holbrook (2001)</p>
-        </article>
-        <article class="item">
-          <h3>Stated willingness to pay</h3>
-          <p>What is the most you would pay for this T-shirt?</p>
-          <p class="quiet">Enter an amount in NOK. Enter 0 if you would not pay anything for it.</p>
-        </article>
-        <article class="item">
-          <h3>Environmental concern</h3>
-          <ul>
-            <li>I am concerned about environmental problems.</li>
-            <li>I am concerned about the impact of human activity on nature.</li>
-            <li>I am concerned about how climate change will affect society.</li>
-          </ul>
-          <p class="quiet">1 Strongly disagree · 7 Strongly agree</p>
-        </article>
-        <article class="item">
-          <h3>Manipulation checks</h3>
-          <p class="quiet">Presented after the outcome measures.</p>
-          <div class="compact-questions">
-            <p>Which source provided the emissions information?</p>
-            <p class="quiet">Brand digital product passport · Independent review website · Not sure</p>
-            <p class="question-next">How emotional did you find the wording?</p>
-            <p class="quiet">1 Not at all emotional · 7 Very emotional</p>
-          </div>
-        </article>
+  <main id="measurement-flow" class="wrap">
+    <section class="flow" aria-label="Measurement sequence">
+      <div class="stage-rail" role="tablist" aria-label="Measurement sequence">
+        <button class="stage-button" id="before-tab" type="button" role="tab" aria-controls="before-panel" aria-selected="false" tabindex="-1">
+          <span class="stage-button-label">Before</span>
+          <span class="stage-button-detail">Attention check</span>
+        </button>
+        <button class="stage-button" id="outcomes-tab" type="button" role="tab" aria-controls="outcomes-panel" aria-selected="true">
+          <span class="stage-button-label">Outcomes</span>
+          <span class="stage-button-detail">Trust and price</span>
+        </button>
+        <button class="stage-button" id="after-tab" type="button" role="tab" aria-controls="after-panel" aria-selected="false" tabindex="-1">
+          <span class="stage-button-label">After</span>
+          <span class="stage-button-detail">Source and tone</span>
+        </button>
       </div>
+
+      <section class="stage-panel" id="before-panel" role="tabpanel" aria-labelledby="before-tab">
+        <header class="stage-header">
+          <div>
+            <p class="stage-timing">Before the outcomes</p>
+            <h2 class="stage-title">Attention check</h2>
+          </div>
+        </header>
+        <article class="measure">
+          <p>Please select Option B.</p>
+          <ul class="choices" aria-label="Response options">
+            <li>Option A</li><li>Option B</li><li>Option C</li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="stage-panel" id="outcomes-panel" role="tabpanel" aria-labelledby="outcomes-tab">
+        <header class="stage-header">
+          <div>
+            <p class="stage-timing">Randomized order</p>
+            <h2 class="stage-title">Outcome measures</h2>
+          </div>
+          <button class="order-button" type="button">Switch order</button>
+        </header>
+        <div class="pair" id="outcome-order">
+          <article class="measure" id="brand-trust">
+            <h3>Brand trust</h3>
+            <ul>
+              <li>I trust this brand.</li>
+              <li>This brand is dependable.</li>
+              <li>This brand is honest.</li>
+            </ul>
+            <div class="scale caption"><span>1 Strongly disagree</span><span>7 Strongly agree</span></div>
+            <p class="caption order-note">Adapted from Chaudhuri and Holbrook (2001)</p>
+          </article>
+          <article class="measure" id="willingness-to-pay">
+            <h3>Stated willingness to pay</h3>
+            <p>What is the most you would pay for this T-shirt?</p>
+            <p class="caption">Enter an amount in NOK. Enter 0 if you would not pay anything for it.</p>
+          </article>
+        </div>
+        <p class="sr-only" id="order-announcement" aria-live="polite"></p>
+      </section>
+
+      <section class="stage-panel" id="after-panel" role="tabpanel" aria-labelledby="after-tab">
+        <header class="stage-header">
+          <div>
+            <p class="stage-timing">After the outcomes</p>
+            <h2 class="stage-title">Manipulation checks</h2>
+          </div>
+        </header>
+        <div class="pair">
+          <article class="measure">
+            <h3>Information source</h3>
+            <p>Which source provided the emissions information?</p>
+            <ul class="choices" aria-label="Response options">
+              <li>Brand digital product passport</li><li>Independent review website</li><li>Not sure</li>
+            </ul>
+          </article>
+          <article class="measure">
+            <h3>Emotional wording</h3>
+            <p>How emotional did you find the wording?</p>
+            <div class="scale caption"><span>1 Not at all emotional</span><span>7 Very emotional</span></div>
+          </article>
+        </div>
+      </section>
     </section>
+
+    <details class="control">
+      <summary>Environmental concern</summary>
+      <div class="control-body">
+        <ul>
+          <li>I am concerned about environmental problems.</li>
+          <li>I am concerned about the impact of human activity on nature.</li>
+          <li>I am concerned about how climate change will affect society.</li>
+        </ul>
+        <div class="scale caption"><span>1 Strongly disagree</span><span>7 Strongly agree</span></div>
+      </div>
+    </details>
   </main>
 
   <script>
-    document.querySelector(".print-button").addEventListener("click", () => window.print());
-    document.documentElement.classList.add("interactive");
+    const stageTabs = [...document.querySelectorAll(".stage-button")];
+    const stagePanels = stageTabs.map(tab => document.getElementById(tab.getAttribute("aria-controls")));
+    const outcomeOrder = document.getElementById("outcome-order");
+    const orderAnnouncement = document.getElementById("order-announcement");
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    function selectStage(index, moveFocus = false, animate = true) {
+      for (const [position, tab] of stageTabs.entries()) {
+        const selected = position === index;
+        tab.setAttribute("aria-selected", String(selected));
+        tab.tabIndex = selected ? 0 : -1;
+        stagePanels[position].hidden = !selected;
+      }
+      if (moveFocus) stageTabs[index].focus();
+      if (animate && !reduceMotion.matches) {
+        const panel = stagePanels[index];
+        panel.getAnimations().forEach(animation => animation.cancel());
+        panel.animate(
+          [{ transform: "translateY(6px)", opacity: .7 }, { transform: "translateY(0)", opacity: 1 }],
+          { duration: 190, easing: "ease-out" }
+        );
+      }
+    }
+
+    for (const [index, tab] of stageTabs.entries()) {
+      tab.addEventListener("click", () => {
+        if (tab.getAttribute("aria-selected") !== "true") selectStage(index);
+      });
+      tab.addEventListener("keydown", event => {
+        let next;
+        if (event.key === "ArrowRight") next = (index + 1) % stageTabs.length;
+        if (event.key === "ArrowLeft") next = (index - 1 + stageTabs.length) % stageTabs.length;
+        if (event.key === "Home") next = 0;
+        if (event.key === "End") next = stageTabs.length - 1;
+        if (next === undefined) return;
+        event.preventDefault();
+        selectStage(next, true);
+      });
+    }
+
+    document.querySelector(".order-button").addEventListener("click", () => {
+      const cards = [...outcomeOrder.children];
+      for (const card of cards) card.getAnimations().forEach(animation => animation.cancel());
+      const positions = cards.map(card => card.getBoundingClientRect());
+      outcomeOrder.append(cards[0]);
+      orderAnnouncement.textContent = outcomeOrder.firstElementChild.querySelector("h3").textContent + " is shown first.";
+      if (reduceMotion.matches) return;
+      for (const [index, card] of cards.entries()) {
+        const current = card.getBoundingClientRect();
+        card.animate(
+          [{ transform: "translate(" + (positions[index].left - current.left) + "px, " + (positions[index].top - current.top) + "px)" },
+           { transform: "translate(0, 0)" }],
+          { duration: 240, easing: "ease-in-out" }
+        );
+      }
+    });
+
+    selectStage(1, false, false);
+    document.documentElement.classList.add("has-interaction");
   </script>
 </body>
 </html>
