@@ -41,9 +41,6 @@
     .nav a { display: inline-flex; align-items: center; min-height: 44px; color: var(--muted); font-size: .9rem; text-decoration: none; }
     .nav a[aria-current="page"] { color: var(--accent-deep); text-decoration: underline; text-underline-offset: .25em; }
     .nav a:hover { color: var(--accent); text-decoration: underline; text-underline-offset: .25em; }
-    .print-button { display: none; min-height: 44px; border: 1px solid var(--line); border-radius: 6px; padding: .4rem .8rem; background: var(--paper); color: var(--ink); cursor: pointer; }
-    .interactive .print-button { display: inline-flex; align-items: center; }
-    .print-button:hover { background: var(--wash); }
     .hero { display: grid; grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr); align-items: center; gap: clamp(2rem, 6vw, 6.25rem); padding-block: clamp(2.5rem, 7vw, 6.5rem); }
     .intro { display: grid; gap: 1.25rem; }
     .eyebrow { color: var(--accent-deep); font-size: .79rem; font-weight: 750; letter-spacing: .12em; text-transform: uppercase; }
@@ -89,23 +86,6 @@
       .section-header { margin-bottom: 1.1rem; }
     }
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
-    @media print {
-      @page { size: A4; margin: 2.5cm; }
-      :root { color-scheme: light; }
-      body { background: #fff; color: #000; font: 12pt/1.5 "Times New Roman", serif; }
-      .top, .hero, .skip { display: none !important; }
-      .wrap { width: auto; margin: 0; }
-      .section { border: 0; padding: 0; }
-      .section-header { gap: .15rem; margin-bottom: 12pt; }
-      h2, h3, .eyebrow, .condition h3, .condition .wording, .item h3 { font: bold 12pt/1.5 "Times New Roman", serif; letter-spacing: normal; color: #000; text-transform: none; }
-      .quiet, .condition .claim, .condition .wording { font: inherit; color: #000; }
-      .matrix { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; border: 1px solid #9d9d9d; border-radius: 0; overflow: visible; background: transparent; }
-      .condition { border: 1px solid #c1c1c1; background: transparent; padding: 9pt; gap: 3pt; }
-      .item-list { grid-template-columns: minmax(0, 1fr); }
-      .item { border: 0; padding: 0 0 8pt; gap: 2pt; }
-      .condition, .item { break-inside: avoid; }
-      #appendix-b { break-before: page; }
-    }
   </style>
 </head>
 <body>
@@ -116,7 +96,6 @@
       <nav class="nav" aria-label="Appendices">
         <a href="appendix-a.html">Appendix A</a>
         <a href="appendix-b.html">Appendix B</a>
-        <button class="print-button" type="button">Print appendices</button>
       </nav>
     </div>
   </header>
@@ -272,7 +251,6 @@
       });
     }));
 
-    document.querySelector(".print-button").addEventListener("click", () => window.print());
     document.documentElement.classList.add("interactive");
   </script>
 </body>
