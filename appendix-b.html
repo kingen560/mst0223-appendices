@@ -105,6 +105,18 @@
     .scale { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .35rem .75rem; border-top: 1px solid var(--line); padding-top: .55rem; margin-top: .8rem; }
     .choices { display: flex; flex-wrap: wrap; gap: .4rem; padding: 0 !important; list-style: none; margin-top: .65rem; }
     .choices li { border: 1px solid var(--line); border-radius: .45rem; padding: .25rem .55rem; font-size: .875rem; }
+    .attention-choices li { padding: 0; border: 0; }
+    .attention-choices button {
+      min-height: 44px;
+      padding: .35rem .65rem;
+      border: 1px solid #8da99b;
+      border-radius: .45rem;
+      background: var(--paper);
+      font-size: .95rem;
+    }
+    .attention-choices button:enabled { cursor: pointer; }
+    .attention-choices button:enabled:hover { background: var(--dark); color: var(--paper); }
+    .attention-feedback:not(:empty) { margin-top: .65rem; }
     .order-button {
       display: none;
       min-height: 44px;
@@ -162,11 +174,11 @@
   <main id="measurement-flow" class="wrap">
     <section class="flow" aria-label="Measurement sequence">
       <div class="stage-rail" role="tablist" aria-label="Measurement sequence">
-        <button class="stage-button" id="before-tab" type="button" role="tab" aria-controls="before-panel" aria-selected="false" tabindex="-1">
+        <button class="stage-button" id="before-tab" type="button" role="tab" aria-controls="before-panel" aria-selected="true">
           <span class="stage-button-label">Before</span>
           <span class="stage-button-detail">Attention check</span>
         </button>
-        <button class="stage-button" id="outcomes-tab" type="button" role="tab" aria-controls="outcomes-panel" aria-selected="true">
+        <button class="stage-button" id="outcomes-tab" type="button" role="tab" aria-controls="outcomes-panel" aria-selected="false" tabindex="-1">
           <span class="stage-button-label">Outcomes</span>
           <span class="stage-button-detail">Trust and price</span>
         </button>
@@ -185,9 +197,12 @@
         </header>
         <article class="measure">
           <p>Please select Option B.</p>
-          <ul class="choices" aria-label="Response options">
-            <li>Option A</li><li>Option B</li><li>Option C</li>
+          <ul class="choices attention-choices" aria-label="Response options">
+            <li><button type="button" disabled>Option A</button></li>
+            <li><button type="button" data-continue disabled>Option B</button></li>
+            <li><button type="button" disabled>Option C</button></li>
           </ul>
+          <p class="attention-feedback" role="status"></p>
         </article>
       </section>
 
@@ -297,6 +312,19 @@
       });
     }
 
+    const attentionFeedback = document.querySelector(".attention-feedback");
+    for (const button of document.querySelectorAll(".attention-choices button")) {
+      button.addEventListener("click", () => {
+        if (button.hasAttribute("data-continue")) {
+          attentionFeedback.textContent = "";
+          selectStage(1, true);
+        } else {
+          attentionFeedback.textContent = "Try again.";
+        }
+      });
+      button.disabled = false;
+    }
+
     document.querySelector(".order-button").addEventListener("click", () => {
       const cards = [...outcomeOrder.children];
       for (const card of cards) card.getAnimations().forEach(animation => animation.cancel());
@@ -314,7 +342,7 @@
       }
     });
 
-    selectStage(1, false, false);
+    selectStage(0, false, false);
     document.documentElement.classList.add("has-interaction");
   </script>
 </body>
